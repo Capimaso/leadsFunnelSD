@@ -43,9 +43,10 @@
     <p class="text-lg mb-6">
       Obrigado pelo seu interesse. Entraremos em contato em breve com oportunidades personalizadas para você.
     </p>
-    <a href="index.php" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
+    <a href="index.html" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition">
       Voltar para o formulário
     </a>
   </div>
 </body>
+
 </html>
