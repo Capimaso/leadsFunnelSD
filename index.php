@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simone Diniz - Corretora de Imóveis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/648d3f51-51be-4700-8037-8ab6a0b42c7a.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .content { position: relative; z-index: 2; }
+        .logo-text { font-family: 'Playfair Display', serif; }
+        .card { transition: all 0.3s ease; border-radius: 16px; overflow: hidden; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);}
+        .form-input { transition: all 0.3s ease; border-radius: 8px; }
+        .form-input:focus { border-color: #1e40af; box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);}
+        .success-message { animation: fadeInUp 0.5s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
+        .hero-text { text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body>
+    <div class="content min-h-screen flex flex-col justify-center items-center p-4">
+        <!-- Hero Section -->
+        <div class="text-center mb-8 max-w-2xl">
+            <div class="mb-6">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f07146d3-33fd-4073-8f60-cdc34b312412.png" 
+                     alt="Modern residential building" 
+                     class="mx-auto rounded-lg shadow-lg" />
+            </div>
+            <h1 class="logo-text text-4xl md:text-6xl font-bold text-white mb-2 hero-text">Simone Diniz</h1>
+            <p class="text-xl md:text-2xl text-white mb-4 hero-text">Corretora de Imóveis</p>
+            <p class="text-lg text-white/90 hero-text max-w-xl mx-auto">
+                Cadastre-se para que eu possa entrar em contato com você. Quanto mais informações você fornecer, maiores as chances de receber ofertas personalizadas.
+            </p>
+        </div>
+
+        <!-- Formulário -->
+        <div class="card w-full max-w-4xl p-8 shadow-2xl">
+            <div id="form-container">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 text-center">Para começar, me conte um pouco sobre você</h2>
+                <p class="text-gray-600 text-center mb-6">Seus dados são confidenciais.</p>
+
+                <form id="cadastroForm" class="space-y-6" action= "createUser.php" method="POST">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required
+                               class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="Seu nome completo" />
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefone *</label>
+                            <input type="tel" id="telefone" name="telefone"
+                                   class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="(11) 99999-9999" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="email" name="email"
+                                   class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="seu@email.com" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Renda Mensal (R$) *</label>
+                            <input type="number" id="renda" name="salario" required min="0" step="0.01"
+                                   class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="5000.00" />
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Número de Filhos</label>
+                            <input type="number" id="filhos" name="filhos" min="0" value="0"
+                                   class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                   placeholder="0" />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Urgência da Compra *</label>
+                        <select id="urgencia" name="urgencia" required
+                                class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Selecione a urgência</option>
+                            <option value="alta">Alta (0-3 meses)</option>
+                            <option value="media">Média (3-6 meses)</option>
+                            <option value="baixa">Baixa (6+ meses)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Bairro de Interesse *</label>
+                        <input type="text" id="bairro" name="bairro" required
+                               class="form-input w-full px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                               placeholder="Ex: Jardins, Moema, Pinheiros" />
+                    </div>
+
+                    <div class="text-center">
+                        <p class="text-sm text-gray-600 mb-4">
+                            <i class="fas fa-shield-alt mr-1"></i> Seus dados estão seguros conosco
+                        </p>
+                        <button type="submit"
+                                class="w-full bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-800 hover:to-blue-700 text-white py-4 px-6 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-paper-plane mr-2"></i>Fazer meu cadastro
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Mensagem de Sucesso -->
+            <div id="success-message" class="success-message hidden text-center py-8">
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4">
+                    <i class="fas fa-check-circle text-4xl text-green-700 mb-4"></i>
+                    <h3 class="font-bold text-lg">Cadastro realizado com sucesso!</h3>
+                    <p>Obrigado pelo seu interesse. Entraremos em contato em breve com oportunidades personalizadas para você.</p>
+                </div>
+                <button onclick="resetForm()"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    <i class="fas fa-plus mr-2"></i>Registrar outra pessoa
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-8 text-white/70 text-center">
+            <p>© 2024 Simone Diniz - Corretora de Imóveis. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>
